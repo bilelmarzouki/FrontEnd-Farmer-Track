@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Card, CardContent, Typography, CircularProgress, Box, TextField, MenuItem } from '@mui/material';
+import { Card, CardContent, Typography, CircularProgress, Box, TextField, MenuItem } from '@mui/material';
+import { GridLegacy as Grid } from '@mui/material';
 import { Cow } from '../types';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5005/api';
@@ -29,11 +30,11 @@ const Dashboard: React.FC = () => {
         setTotalExpenses(expJson.totalExpenses ?? 0);
 
         // Extract unique breeds
-        const uniqueBreeds = [...new Set(cows.map(cow => cow.breed))].sort();
+        const uniqueBreeds: any = [...new Set(cows.map(cow => cow.breed))].sort();
         setBreeds(uniqueBreeds);
 
         // Set default breed if Holstein exists, else first breed
-        const defaultBreed = uniqueBreeds.includes('Holstein') ? 'Holstein' : uniqueBreeds[0] || '';
+        const defaultBreed: any = uniqueBreeds.includes('Holstein') ? 'Holstein' : uniqueBreeds[0] || '';
         setSelectedBreed(defaultBreed);
 
         const now = new Date();
