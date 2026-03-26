@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Button, Card, CardContent, CircularProgress, Container, IconButton, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, Paper, FormControlLabel, Switch } from '@mui/material';
-import { GridLegacy as Grid } from '@mui/material';
+import { Box, Button, Card, CardContent, CircularProgress, Container, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, Paper, FormControlLabel, Switch } from '@mui/material';
+import { GridLegacy } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -136,8 +136,8 @@ const ExpensesPage: React.FC = () => {
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h6">Expense Form</Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
+          <GridLegacy container spacing={2}>
+            <GridLegacy item xs={12} md={4}>
               <TextField
                 select
                 SelectProps={{ native: true }}
@@ -152,14 +152,14 @@ const ExpensesPage: React.FC = () => {
                   <option key={cow.id} value={cow.id}>{`${cow.name} (${cow.breed})`}</option>
                 ))}
               </TextField>
-            </Grid>
-            <Grid item xs={12} md={4}><TextField fullWidth label="Category" value={expenseForm.category} onChange={(e)=>setExpenseForm({...expenseForm,category:e.target.value})} required /></Grid>
-            <Grid item xs={12} md={4}><TextField fullWidth label="Amount" type="number" value={expenseForm.amount} onChange={(e)=>setExpenseForm({...expenseForm,amount:Number(e.target.value)})} required /></Grid>
-            <Grid item xs={12} md={6}><TextField fullWidth label="Date" type="date" InputLabelProps={{ shrink: true }} value={expenseForm.date} onChange={(e)=>setExpenseForm({...expenseForm,date:e.target.value})} required /></Grid>
-            <Grid item xs={12} md={6}><TextField fullWidth label="Description" value={expenseForm.description} onChange={(e)=>setExpenseForm({...expenseForm,description:e.target.value})} /></Grid>
-            <Grid item xs={12}><FormControlLabel control={<Switch checked={expenseForm.recurring} onChange={(e)=>setExpenseForm({...expenseForm,recurring:e.target.checked})}/>} label="Recurring" /></Grid>
-            <Grid item xs={12}><Button onClick={handleCreate} variant="contained">Create Expense</Button></Grid>
-          </Grid>
+            </GridLegacy>
+            <GridLegacy item xs={12} md={4}><TextField fullWidth label="Category" value={expenseForm.category} onChange={(e)=>setExpenseForm({...expenseForm,category:e.target.value})} required /></GridLegacy>
+            <GridLegacy item xs={12} md={4}><TextField fullWidth label="Amount" type="number" value={expenseForm.amount} onChange={(e)=>setExpenseForm({...expenseForm,amount:Number(e.target.value)})} required /></GridLegacy>
+            <GridLegacy item xs={12} md={6}><TextField fullWidth label="Date" type="date" InputLabelProps={{ shrink: true }} value={expenseForm.date} onChange={(e)=>setExpenseForm({...expenseForm,date:e.target.value})} required /></GridLegacy>
+            <GridLegacy item xs={12} md={6}><TextField fullWidth label="Description" value={expenseForm.description} onChange={(e)=>setExpenseForm({...expenseForm,description:e.target.value})} /></GridLegacy>
+            <GridLegacy item xs={12}><FormControlLabel control={<Switch checked={expenseForm.recurring} onChange={(e)=>setExpenseForm({...expenseForm,recurring:e.target.checked})}/>} label="Recurring" /></GridLegacy>
+            <GridLegacy item xs={12}><Button onClick={handleCreate} variant="contained">Create Expense</Button></GridLegacy>
+          </GridLegacy>
         </CardContent>
       </Card>
 
@@ -167,12 +167,12 @@ const ExpensesPage: React.FC = () => {
         <Card sx={{ mb: 3 }}>
           <CardContent>
             <Typography variant="h6">Update Expense</Typography>
-            <Grid container spacing={2}>
-              <Grid item xs={12} md={4}><TextField fullWidth label="Category" value={editExpense.category} onChange={(e)=>setEditExpense({...editExpense, category: e.target.value})}/></Grid>
-              <Grid item xs={12} md={4}><TextField fullWidth label="Amount" type="number" value={editExpense.amount} onChange={(e)=>setEditExpense({...editExpense, amount: Number(e.target.value)})}/></Grid>
-              <Grid item xs={12} md={4}><TextField fullWidth label="Date" type="date" InputLabelProps={{ shrink: true }} value={editExpense.date?.split('T')[0] || ''} onChange={(e)=>setEditExpense({...editExpense,date: e.target.value})}/></Grid>
-              <Grid item xs={12}><TextField fullWidth label="Description" value={editExpense.description} onChange={(e)=>setEditExpense({...editExpense,description:e.target.value})}/></Grid>
-            </Grid>
+            <GridLegacy container spacing={2}>
+              <GridLegacy item xs={12} md={4}><TextField fullWidth label="Category" value={editExpense.category} onChange={(e)=>setEditExpense({...editExpense, category: e.target.value})}/></GridLegacy>
+              <GridLegacy item xs={12} md={4}><TextField fullWidth label="Amount" type="number" value={editExpense.amount} onChange={(e)=>setEditExpense({...editExpense, amount: Number(e.target.value)})}/></GridLegacy>
+              <GridLegacy item xs={12} md={4}><TextField fullWidth label="Date" type="date" InputLabelProps={{ shrink: true }} value={editExpense.date?.split('T')[0] || ''} onChange={(e)=>setEditExpense({...editExpense,date: e.target.value})}/></GridLegacy>
+              <GridLegacy item xs={12}><TextField fullWidth label="Description" value={editExpense.description} onChange={(e)=>setEditExpense({...editExpense,description:e.target.value})}/></GridLegacy>
+            </GridLegacy>
             <Box mt={2}><Button onClick={handleUpdate} variant="contained">Save</Button><Button sx={{ ml:1 }} onClick={()=>setEditExpense(null)}>Cancel</Button></Box>
           </CardContent>
         </Card>
@@ -180,33 +180,33 @@ const ExpensesPage: React.FC = () => {
 
       <Card sx={{ mb: 3 }}>
         <CardContent>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} md={5}><TextField fullWidth label="Filter by breed" value={filterBreed} onChange={(e)=>setFilterBreed(e.target.value)} /></Grid>
-            <Grid item><Button variant="contained" onClick={handleFilterByBreed}>Search Breed</Button></Grid>
-            <Grid item><Button variant="text" onClick={fetchAll}>Reset</Button></Grid>
-            <Grid item xs={12}>{total.toFixed(2)} TND total</Grid>
-          </Grid>
+          <GridLegacy container spacing={2} alignItems="center">
+            <GridLegacy item xs={12} md={5}><TextField fullWidth label="Filter by breed" value={filterBreed} onChange={(e)=>setFilterBreed(e.target.value)} /></GridLegacy>
+            <GridLegacy item><Button variant="contained" onClick={handleFilterByBreed}>Search Breed</Button></GridLegacy>
+            <GridLegacy item><Button variant="text" onClick={fetchAll}>Reset</Button></GridLegacy>
+            <GridLegacy item xs={12}>{total.toFixed(2)} TND total</GridLegacy>
+          </GridLegacy>
         </CardContent>
       </Card>
 
       <Card sx={{ mb: 3 }}>
         <CardContent>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} md={5}><TextField label="Start Date" type="date" InputLabelProps={{ shrink: true }} value={range.startDate} onChange={(e)=>setRange({...range,startDate:e.target.value})} fullWidth /></Grid>
-            <Grid item xs={12} md={5}><TextField label="End Date" type="date" InputLabelProps={{ shrink: true }} value={range.endDate} onChange={(e)=>setRange({...range,endDate:e.target.value})} fullWidth /></Grid>
-            <Grid item><Button variant="contained" onClick={handleRange}>Apply Range</Button></Grid>
-          </Grid>
+          <GridLegacy container spacing={2} alignItems="center">
+            <GridLegacy item xs={12} md={5}><TextField label="Start Date" type="date" InputLabelProps={{ shrink: true }} value={range.startDate} onChange={(e)=>setRange({...range,startDate:e.target.value})} fullWidth /></GridLegacy>
+            <GridLegacy item xs={12} md={5}><TextField label="End Date" type="date" InputLabelProps={{ shrink: true }} value={range.endDate} onChange={(e)=>setRange({...range,endDate:e.target.value})} fullWidth /></GridLegacy>
+            <GridLegacy item><Button variant="contained" onClick={handleRange}>Apply Range</Button></GridLegacy>
+          </GridLegacy>
         </CardContent>
       </Card>
 
       <Card sx={{ mb: 3 }}>
         <CardContent>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={6} md={3}><TextField label="Year" type="number" value={monthlyQuery.year} onChange={(e)=>setMonthlyQuery({...monthlyQuery,year:Number(e.target.value)})} fullWidth /></Grid>
-            <Grid item xs={6} md={3}><TextField label="Month" type="number" value={monthlyQuery.month} onChange={(e)=>setMonthlyQuery({...monthlyQuery,month:Number(e.target.value)})} fullWidth /></Grid>
-            <Grid item><Button variant="contained" onClick={fetchMonthlySummary}>Get Month Summary</Button></Grid>
-            {monthlySummary && (<Grid item xs={12}><Typography>{`Period: ${monthlySummary.period}, Count: ${monthlySummary.count}, Total: ${monthlySummary.totalExpensesInThisMonth} TND`}</Typography></Grid>)}
-          </Grid>
+          <GridLegacy container spacing={2} alignItems="center">
+            <GridLegacy item xs={6} md={3}><TextField label="Year" type="number" value={monthlyQuery.year} onChange={(e)=>setMonthlyQuery({...monthlyQuery,year:Number(e.target.value)})} fullWidth /></GridLegacy>
+            <GridLegacy item xs={6} md={3}><TextField label="Month" type="number" value={monthlyQuery.month} onChange={(e)=>setMonthlyQuery({...monthlyQuery,month:Number(e.target.value)})} fullWidth /></GridLegacy>
+            <GridLegacy item><Button variant="contained" onClick={fetchMonthlySummary}>Get Month Summary</Button></GridLegacy>
+            {monthlySummary && (<GridLegacy item xs={12}><Typography>{`Period: ${monthlySummary.period}, Count: ${monthlySummary.count}, Total: ${monthlySummary.totalExpensesInThisMonth} TND`}</Typography></GridLegacy>)}
+          </GridLegacy>
         </CardContent>
       </Card>
 

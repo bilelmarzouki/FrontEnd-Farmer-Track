@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Box, Button, Card, CardContent, CircularProgress, Container,IconButton, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, Paper, FormControlLabel, Switch } from '@mui/material';
-import { GridLegacy as Grid } from '@mui/material';
+import { GridLegacy } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -93,18 +93,18 @@ const CowsPage: React.FC = () => {
         <Card sx={{ mb: 3 }}>
           <CardContent>
             <Typography variant="h6">Edit Cow</Typography>
-            <Grid container spacing={2}>
+            <GridLegacy container spacing={2}>
               {['name', 'breed'].map((field) => (
-                <Grid item xs={12} md={6} key={field}>
+                <GridLegacy item xs={12} md={6} key={field}>
                   <TextField
                     fullWidth
                     label={field}
                     value={editCow[field]}
                     onChange={e => setEditCow({ ...editCow, [field]: e.target.value })}
                   />
-                </Grid>
+                </GridLegacy>
               ))}
-              <Grid item xs={12} md={4}>
+              <GridLegacy item xs={12} md={4}>
                 <TextField
                   fullWidth
                   type="number"
@@ -112,8 +112,8 @@ const CowsPage: React.FC = () => {
                   value={editCow.weightKg || 0}
                   onChange={e => setEditCow({ ...editCow, weightKg: Number(e.target.value) })}
                 />
-              </Grid>
-              <Grid item xs={12} md={4}>
+              </GridLegacy>
+              <GridLegacy item xs={12} md={4}>
                 <TextField
                   fullWidth
                   type="number"
@@ -121,14 +121,14 @@ const CowsPage: React.FC = () => {
                   value={editCow.milkYield || 0}
                   onChange={e => setEditCow({ ...editCow, milkYield: Number(e.target.value) })}
                 />
-              </Grid>
-              <Grid item xs={12} md={4}>
+              </GridLegacy>
+              <GridLegacy item xs={12} md={4}>
                 <FormControlLabel
                   control={<Switch checked={!!editCow.isPregnant} onChange={e => setEditCow({ ...editCow, isPregnant: e.target.checked })} />}
                   label="Pregnant"
                 />
-              </Grid>
-            </Grid>
+              </GridLegacy>
+            </GridLegacy>
             <Box mt={2}>
               <Button variant="contained" onClick={handleUpdate}>Save</Button>
               <Button sx={{ ml: 1 }} onClick={() => setEditCow(null)}>Cancel</Button>

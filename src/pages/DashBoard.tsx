@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, CircularProgress, Box, TextField, MenuItem } from '@mui/material';
-import { GridLegacy as Grid } from '@mui/material';
+import { GridLegacy } from '@mui/material';
 import { Cow } from '../types';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5005/api';
@@ -92,35 +92,35 @@ const Dashboard: React.FC = () => {
         </TextField>
       </Box>
 
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={4}>
+      <GridLegacy container spacing={3}>
+        <GridLegacy item xs={12} md={4}>
           <Card>
             <CardContent>
               <Typography color="textSecondary">Cows in Farm</Typography>
               <Typography variant="h4">{allCows.length}</Typography>
             </CardContent>
           </Card>
-        </Grid>
+        </GridLegacy>
 
-        <Grid item xs={12} md={4}>
+        <GridLegacy item xs={12} md={4}>
           <Card>
             <CardContent>
               <Typography color="textSecondary">{selectedBreed} Cows</Typography>
               <Typography variant="h4">{breedCows.length}</Typography>
             </CardContent>
           </Card>
-        </Grid>
+        </GridLegacy>
 
-        <Grid item xs={12} md={4}>
+        <GridLegacy item xs={12} md={4}>
           <Card>
             <CardContent>
               <Typography color="textSecondary">Total Expenses</Typography>
               <Typography variant="h4">{totalExpenses.toFixed(2)} TND</Typography>
             </CardContent>
           </Card>
-        </Grid>
+        </GridLegacy>
 
-        <Grid item xs={12} md={6}>
+        <GridLegacy item xs={12} md={6}>
           <Card>
             <CardContent>
               <Typography color="textSecondary">Monthly Summary</Typography>
@@ -128,8 +128,8 @@ const Dashboard: React.FC = () => {
               <Typography>{monthlySummary ? `${monthlySummary.count} expenses, ${monthlySummary.totalExpensesInThisMonth.toFixed(2)} TND` : 'No data'}</Typography>
             </CardContent>
           </Card>
-        </Grid>
-      </Grid>
+        </GridLegacy>
+      </GridLegacy>
     </Box>
   );
 };
