@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Card, CardContent, Typography, CircularProgress, Box, TextField, MenuItem } from '@mui/material';
 import { Cow } from '../types';
 
-const API_URL = 'http://localhost:5005/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5005/api';
 
 const Dashboard: React.FC = () => {
   const [allCows, setAllCows] = useState<Cow[]>([]);

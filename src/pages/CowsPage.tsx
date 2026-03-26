@@ -4,7 +4,7 @@ import { Box, Button, Card, CardContent, CircularProgress, Container, Grid, Icon
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-const API_URL = 'http://localhost:5005/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5005/api';
 
 const CowsPage: React.FC = () => {
   const [cows, setCows] = useState([]);

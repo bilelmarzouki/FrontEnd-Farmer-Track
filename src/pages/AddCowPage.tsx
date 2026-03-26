@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, Card, CardContent, Container, FormControlLabel, Switch, TextField, Typography } from '@mui/material';
 
-const API_URL = 'http://localhost:5005/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5005/api';
 
 const AddCowPage: React.FC = () => {
   const navigate = useNavigate();
